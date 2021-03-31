@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-
+import { auth, provider} from '../firebase';
 import {Button} from '@material-ui/core'
 function Login() {
 
-    const signIn =() => {}
+    const signIn =() => {
+        auth.signInWithPopup(provider).catch(alert);
+    }
 
 
     return (
