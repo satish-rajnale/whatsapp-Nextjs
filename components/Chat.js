@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Avatar } from "@material-ui/core";
 import getRecipientEmail from "../utils/getRecipientEmail";
-
+import {useRouter} from "next/router"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 function Chat({ id, users }) {
+
+    const router = useRouter();
   const [user] = useAuthState(auth);
   //cross referencing users collection on database with the user
   const [recipientSnapshot] = useCollection(
@@ -15,9 +17,13 @@ function Chat({ id, users }) {
   );
   const recipient = recipientSnapshot?.docs?.[0]?.data();
   const recipientEmail = getRecipientEmail(users, user);
-  console.log(recipientEmail);
+
+    const enterChat = () => {
+        router.push(`/chat/${id}`)
+    }
+
   return (
-    <Container>
+    <Container onClick={enterChat}>
       {recipient ? <UserAvatar src={recipient?.photoURL} /> : <UserAvatar >{recipientEmail[0]}</UserAvatar>}
 
       <p>{recipientEmail}</p>
