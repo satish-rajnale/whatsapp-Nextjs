@@ -21,7 +21,7 @@ app.get('/cookies.html', function (req, res) {
       path: '/',
       secure: true,
     }),
-    cookie.serialize('myCookie', JSON.stringify(localData), {
+    cookie.serialize('myPersistentCookie', JSON.stringify(localData), {
       path: '/',
       maxAge: 100,
       secure: true,
