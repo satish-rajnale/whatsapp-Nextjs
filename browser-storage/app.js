@@ -10,6 +10,8 @@ const localData = {
   power: 40,
   skill: 'thunder',
 };
+
+//Cookies demo
 app.get('/cookies.html', function (req, res) {
   //res.setHeader('Set-Cookie', [cookie.serialize('sessionCookie',"Session Cookie Demo", {path:'/',httpOnly: true,'secure': true}),
   //cookie.serialize('persistenceCookie',"Persistence Cookie Demo", {path:'/',maxAge: 900,httpOnly: true,'secure': true})]);
@@ -19,7 +21,7 @@ app.get('/cookies.html', function (req, res) {
       path: '/',
       secure: true,
     }),
-    cookie.serialize('persistenceCookie', JSON.stringify(localData), {
+    cookie.serialize('myCookie', JSON.stringify(localData), {
       path: '/',
       maxAge: 100,
       secure: true,
