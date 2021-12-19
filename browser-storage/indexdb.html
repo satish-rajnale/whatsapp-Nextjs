@@ -102,7 +102,7 @@
 
         function readAll() {
           var objectStore = db
-            .transaction('customers')
+            .transaction(['customers'])
             .objectStore('customers');
 
           console.log(db.transaction('customers'));
